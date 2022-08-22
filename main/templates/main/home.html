@@ -1,0 +1,34 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+    <div class="row">
+        {% for tut in tutorials %}
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                <span class="card-title">{{tut.tutorial_title}}</span>
+                <p>{{tut.tutorial_content}}</p>
+                <p style="font-size:70%">{{tut.tutorial_published}}</p>
+                </div>
+                <div class="card-action">
+                <a href="#">Visit</a>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+      </div>
+
+      <div class="col s12 m4 l4">
+        <ul class="collapsible popout">
+            {% for tutorial in sidebar %}
+                {% if forloop.counter0 == this_tut_idx %}
+                    <li class="active">
+                        <div class="collapsible-header">{{tutorial.tutorial_title}}<br>(currently viewing)</div>
+                    </li>
+                {% else %}
+                    <li>
+                        <div class="collapsible-header">{{tutorial.tutorial_title}}</div>
+                        <div class="collapsible-body">
+                            <p><a href="/{{tutorial.tutorial_slug}}"><button class="btn waves-effect waves-light right-align" style="background-color:yellow; color:black">Go</button></a></p>
+
+{% endblock %}
